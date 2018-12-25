@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            user-select: none;
+        }
+    ul{
+        list-style: none;
+    }
+        header {
+            height: 86px;
+            border-bottom: 1px solid #999;
+        }
+
+        header ul {
+            height: 80px;
+            line-height: 80px;
+        }
+
+        header ul li {
+            list-style: none;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 30px;
+            float: left;
+            width: 50px;
+            text-align: center;
+        }
+
+        header ul li div {
+            background: #000000;
+            transition: all 1s;
+            height: 0px;
+            width: 0px;
+        }
+
+        header nav {
+            margin-top: 10px;
+            height: 0px;
+            width: 300px;
+            background: #000;
+            transition: all 1s;
+        }
+         .carousel {
+            overflow: hidden;
+           position: relative;
+        }
+        /* .carousel .image-box {
+            width: 3540px;
+            -webkit-transform: translateX(-590px);
+            transform: translateX(-590px);
+        } */
+
+        .carousel .image-box li {
+            float: left;
+        }
+
+        .carousel .image-box li a {
+            display: block;
+           
+        }
+
+        .carousel .image-box li a img {
+            width:100%;
+            height:100%;
+        }
+
+        /* 左右滑动 */
+        .carousel span {
+            text-align: center;
+            cursor: pointer;
+            display: none;
+            /* line-height: 50px; */
+            text-align: center;
+            /* font-size: 32px; */
+            font-weight: bold;
+            /* width: 40px;
+            height: 50px; */
+            height: 37px;
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            z-index: 2;
+            background-color: RGBA(0, 0, 0, .3);
+            color: #fff;
+            -webkit-tap-highlight-color: transparent;
+            -ms-user-select: none;
+            /*IE10*/
+            -webkit-user-select: none;
+            /*webkit浏览器*/
+            user-select: none;
+        }
+
+        .carousel:hover span {
+            display: block;
+        }
+
+        .carousel span:hover {
+            background-color: RGBA(0, 0, 0, .7);
+        }
+
+        .carousel span:first-of-type {
+            left: 0px;
+        }
+
+        .carousel span:last-of-type {
+            right: 0px;
+        }
+
+        /* 点盒子 */
+        .carousel .point-box {
+            width: 120px;
+            height: 30px;
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        .carousel .point-box li {
+            float: left;
+            width: 20px;
+            height: 30px;
+            padding: 5px 0 0 5px;
+            display: inline-block;
+        }
+
+        .carousel .point-box li a {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 7px;
+            border: 2px solid #F0F8FF;
+        }
+
+        .carousel .point-box li a.now {
+            background: yellow;
+            box-shadow: #000 0 0 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li>1111
+                <div></div>
+            </li>
+            <li>2222
+                <div style="transition:all 1s;width:50px;height:5px;"></div>
+            </li>
+            <li>3333
+                <div></div>
+            </li>
+            <li>4444
+                <div></div>
+            </li>
+        </ul>
+        <nav>
+        </nav>
+    </header>
+
+    <div class="main" >
+        <div class="carousel">
+            <ul class="image-box">
+                <li><a href=""><img src="./images/slider4.jpeg" alt=""></a></li>
+                <li><a href=""><img src="./images/slider1.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/slider2.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/slider3.jpg" alt=""></a></li>
+                <li><a href=""><img src="./images/slider4.jpeg" alt=""></a></li>
+                <li><a href=""><img src="./images/slider1.jpg" alt=""></a></li>
+            </ul>
+            <span class="prev">&lt;</span><span class="next">&gt;</span>
+            <ul class="point-box">
+                <li><a href="javascript: void(0)" class="abc now"></a></li>
+                <li><a href="javascript: void(0)" class="abc"></a></li>
+                <li><a href="javascript: void(0)" class="abc"></a></li>
+                <li><a href="javascript: void(0)" class="abc"></a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        var oli = document.querySelectorAll('header ul li')
+        var odiv = document.querySelectorAll('header ul li div')
+        for (let i = 0; i < oli.length; i++) {
+            oli[i].index = i;
+            oli[i].onmouseover = function () {
+                for (let i = 0; i < oli.length; i++) {
+                    odiv[i].style.cssText = `transition:all 1s;width:0px;height:0px;`;
+                }
+                odiv[this.index].style.cssText = `transition:all 1s;width:50px;height:5px;`;
+            }
+        }
+        
+        document.querySelector('header').onmouseleave = () => {
+            for (let i = 0; i < odiv.length; i++) {
+                const element = odiv[i];
+                element.style.cssText = '';
+              odiv[1].style.cssText = 'transition:all 1s;width:50px;height:5px;'
+            }
+        }
+     
+    </script>
+    <script src="./carousel.js">
+           
+    </script>
+
+</body>
+
+</html>

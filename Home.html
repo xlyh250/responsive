@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        header {
+            height: 80px;
+            line-height: 80px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        header ul {
+            height: 80px;
+            display: flex;
+            list-style: none;
+            min-height: 570px;
+        }
+
+        header ul li {
+            height: 80px;
+            background: #eee;
+            cursor: pointer;
+            width: 150px;
+            text-align: center;
+        }
+
+        .div {
+            height: 20px;
+            width: 20px;
+            background: #000;
+            position: absolute;
+            left: 16px;
+            top: 53px;
+        }
+
+        header ul li.fristLi {
+            width: 50px
+        }
+
+        .page {
+            height: 100%;
+            display: flex;
+        }
+
+        .page1 div {
+            margin: 200px auto;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+        .page1 div.show {
+            transition-duration: 2s;
+            transition-delay: .5s;
+            transform: scale(2);
+        }
+
+        .page1 div.show2 {
+            transition: all 2s;
+            transform: scale(1);
+        }
+
+        .page2 div {
+            font-size: 30px;
+            color: red;
+            width: 200px;
+            opacity: 0;
+            transition: all 2s;
+            /* margin-left: -100px; */
+            margin: 0 100px;
+            height: 50px;
+
+        }
+
+        .page3 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .page3 div {
+            /* margin: 100px auto; */
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+        .page3 div.show {
+            -moz-transition: all 2s;
+            transition: all 2s;
+            -moz-transform: rotate3d(2, 2, 2, 360deg);
+            transform: rotate3d(2, 2, 2, 360deg);
+        }
+
+        .page3 div.show2 {
+            -moz-transition: all 2s;
+            transition: all 2s;
+            -moz-transform: rotate3d(2, 2, 2, 0deg);
+            transform: rotate3d(2, 2, 2, 0deg);
+        }
+
+        .page3 div.up {
+            transition: 2s;
+            transform: translateY(-20px);
+            -moz-transform: translateY(-20px);
+        }
+
+
+        .page4 div {
+            margin: 100px auto;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            background: green;
+        }
+
+        @keyframes myfirst {
+            0% {
+                background: red;
+            }
+
+            25% {
+                background: yellow;
+            }
+
+            50% {
+                background: blue;
+            }
+
+            100% {
+                background: green;
+            }
+        }
+
+        .page4 div.show {
+            animation: myfirst 3s;
+        }
+
+        .point {
+            position: fixed;
+            right: 50px;
+            top: 300px;
+            width: 30px;
+        }
+
+        .point ul {
+            height: 80px;
+            background: #eee;
+        }
+
+        .point ul li {
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .point ul li a {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid red;
+            border-radius: 50%;
+        }
+
+        .point ul li a.show {
+            background: red;
+        }
+
+        .o {}
+
+        header.second_header {
+            width: 40%;
+            position: fixed;
+            left: 50%;
+            top: 0;
+            margin-left: -20%;
+            background: #eee;
+            height: 26px;
+            border: none;
+        }
+
+        .second_header main {
+            border: 1px solid rgb(162, 157, 157);
+            height: 26px;
+            float: right;
+        }
+
+        .second_header main div {
+            width: 20px;
+            height: 1px;
+            background: #666;
+            opacity: 0.7;
+            margin: 7px 0px;
+        }
+
+        .second_header nav {
+            height: 0px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 26px;
+            opacity: 0;
+            transition: all 2s;
+        }
+
+        .second_header nav.show {
+            height: 60px;
+            opacity: 1;
+        }
+
+        .second_header nav div {
+            height: 22px;
+            width: 100%;
+            line-height: 22px;
+            text-align: center;
+            border-bottom: 1px solid #999;
+            border-left: 1px solid #999;
+            border-right: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <ul>
+            <li class="fristLi"><a href="index.html"></a> 1111</li>
+            <li><a href="index2.html"></a>2222</li>
+            <li><a href="index3.html"></a>3333</li>
+            <li><a href="index4.html"></a>4444</li>
+        </ul>
+        <div class="div">
+        </div>
+    </header>
+
+    <header class="second_header" style="display: none;">
+        <main>
+            <div>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+        </main>
+        <nav>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </nav>
+    </header>
+    <article>
+        <main class="page page1" id="one">
+            第一页
+            <div>
+                变大
+            </div>
+            <div>
+                变大
+            </div>
+
+        </main>
+        <main class="page page2" id="two">
+            <div>
+                111111
+
+            </div>
+            <div>
+
+                222222
+            </div>
+        </main>
+        <main class="page page3" id="three" style="background:rgba(238, 238, 238, 0.21)">
+            <div>
+                111111
+            </div>
+            <div>
+                222222
+            </div>
+        </main>
+        <main class="page page4" id="four">
+            第四页
+            <div>
+                111111
+
+            </div>
+            <div>
+
+                222222
+            </div>
+        </main>
+
+    </article>
+    <div class="point">
+        <ul>
+            <li> <a href="#one" class="show"></a></li>
+            <li> <a href="#two"></a></li>
+            <li> <a href="#three"></a></li>
+            <li> <a href="#four"></a></li>
+        </ul>
+    </div>
+
+    <script>
+        console.time('6');
+
+        var oli = document.querySelectorAll('header ul li')
+        var div = document.querySelector('.div')
+        var fristLi = document.querySelector('.fristLi')
+
+        function move() {
+            div.style.width = 0.2 * fristLi.offsetWidth + 'px';
+            for (let i = 0; i < oli.length; i++) {
+                oli[i].onmouseenter = function (e) {
+
+                    div.style.transition = 'all 1s';
+                    if (i !== 0) {
+                        div.style.transform = `translateX(${oli[i].offsetWidth * i - 80}px)`;
+                    } else {
+                        div.style.transform = `translateX(${oli[i].offsetWidth * i}px)`;
+                    }
+                    div.style.width = 0.5 * oli[i].offsetWidth + 'px';
+                }
+            }
+            document.querySelector('header').onmouseout = (ev) => {
+                 div.style.width = 0.2 * fristLi.offsetWidth + 'px';
+                div.style.transform = `translateX(0px)`;
+                ev.stopPropagation;
+            }
+        }
+        move()
+
+
+        var page = document.querySelectorAll('.page')
+        page.forEach(value => value.style.height = document.documentElement.offsetHeight + 'px')
+        var page1Div = document.querySelectorAll('.page1 div')
+        var page2Div = document.querySelectorAll('.page2 div')
+        var page3Div = document.querySelectorAll('.page3 div')
+        var page4Div = document.querySelectorAll('.page4 div')
+        var a = document.querySelectorAll('.point ul li a')
+        var index = 0;
+
+
+        var Top = document.documentElement.scrollHeight;
+
+        window.onload = function () {
+            pageDiv1();
+            initPageDiv2();
+            resize();
+        }
+
+        // 初始化page的div样式
+        function initPageDiv2() {
+            var l = document.documentElement.offsetWidth / 2;
+
+            page2Div.forEach(value => value.style.cssText = `
+                    transition:all 2s;
+                    transform:translateX(${-l}px);
+                    opacity: 0;`)
+        }
+
+        function pageDiv2() {
+            // var zero = 0 || left;
+            var width = document.documentElement.offsetWidth;
+
+            var l = width > 1000 ? 0 : document.documentElement.offsetWidth / 14;
+            console.log(l);
+
+            page2Div.forEach(value => value.style.cssText = `
+                        transition:all 2s;
+                        transform:translateX(${l}px);
+                        opacity: 1;`)
+        }
+
+        function removepageDiv2() {
+            page2Div.forEach(value => value.style.cssText = ``)
+        }
+
+        // 删除第三页div样式
+        function removePageDiv3() {
+            page3Div.forEach((value) => {
+                value.classList.remove('show2')
+                value.classList.remove('show')
+            });
+        }
+
+        function removePageDiv4() {
+            page4Div.forEach(value => value.classList.remove('show'))
+        }
+
+        function pageDiv1() {
+
+            var timer2;
+            clearTimeout(timer1)
+            clearTimeout(timer0)
+            clearTimeout(timer2)
+
+            page1Div.forEach(value => {
+                index++
+                if (index > 2) {
+                    value.style.color = '';
+                    value.innerText = '变大';
+                    value.classList.remove('show')
+                    //   setTimeout(() => {
+                    //        value.style.cssText = 'transition:all 2s'
+                    //   }, 1000);
+                }
+                if (value.classList.contains('show2')) {
+                    value.classList.remove('show2');
+                }
+            })
+            page1Div.forEach(value => value.classList.add('show'))
+
+            // 变小
+            var timer0 = setTimeout(() => {
+                page1Div.forEach(value => {
+                    //  value.innerText = '变小';
+                    value.classList.remove('show');
+                    value.classList.add('show2');
+                })
+            }, 3000);
+            var timer1 = setTimeout(() => {
+                page1Div.forEach(value => {
+                    value.innerText = '变成红色';
+                    value.style.color = 'red';
+                })
+            }, 5000);
+
+            function timeout() {
+                return new Promise((resolve, reject) => {
+                    var timer2 = setTimeout(() => {
+                        resolve(page1Div.forEach(value => value.innerText = '变小'))
+                    }, 2000);
+                })
+            }
+            timeout().then((res) => {
+            }).catch((error) => {
+            })
+
+        }
+
+        for (let i = 0; i < a.length; i++) {
+            a[i].index = i
+            const element = a[i];
+
+            element.onclick = function (ev) {
+                var target = ev.target;
+
+                for (let i = 0; i < a.length; i++) {
+                    a[i].className = '';
+                    this.className = 'show'
+                }
+                if (i === 0) {
+                    pageDiv1.call(this)
+                }
+                if (i === 1) {
+                    pageDiv2.call(this)
+                } else {
+                    removepageDiv2.call(this)
+                }
+                page[this.index].querySelectorAll('div').forEach(value => value.className = 'show')
+                ev.cancelBubble = true;
+            }
+        }
+
+
+
+        // 加上圆点
+        window.onscroll = function () {
+            var top = document.documentElement.scrollTop
+
+            for (let i = 0; i < page.length; i++) {
+                var height = page[i].offsetHeight;
+                if (top < 100) {
+                    a[0].classList.add('show')
+                    a[1].classList.contains('show') && a[1].classList.remove('show')
+                    initPageDiv2();
+                    pageDiv1()
+                }
+                if (top > 100 && top < height) {
+                    pageDiv2();
+
+                    for (let i = 0; i < a.length; i++) {
+                        if (a[i].classList.contains('show')) {
+                            a[i].classList.remove('show')
+                        }
+                        a[1].classList.add('show')
+                    }
+                    removePageDiv3();
+                } else if (top > 2 * height - 300 && top <= 2 * height + 200) {
+                    initPageDiv2();
+                    page3Div.forEach(value => {
+                        value.classList.add('show');
+                        setTimeout(() => {
+                            value.classList.add('show2')
+                        }, 2000);
+                    })
+
+                    for (let i = 0; i < a.length; i++) {
+                        if (a[i].classList.contains('show')) {
+                            a[i].classList.remove('show')
+                        }
+                        a[2].classList.add('show')
+                    }
+
+                    removePageDiv4();
+                } else if (top > 2 * height + 200) {
+
+                    removePageDiv3();
+                    for (let i = 0; i < a.length; i++) {
+                        if (a[i].classList.contains('show')) {
+                            a[i].classList.remove('show')
+                        }
+                        a[3].classList.add('show')
+                    }
+                    page4Div.forEach(value => value.classList.add('show'))
+                }
+            }
+        }
+
+        page2Div.forEach(value => {
+            var width = document.documentElement.offsetWidth;
+            var l = width > 1000 ? 0 : document.documentElement.offsetWidth / 14;
+            value.onmouseenter = function (ev) {
+                value.style.cssText = `transform:translate(${l}px,-20px);opacity:1;`
+            }
+            value.onmouseout = function (ev) {
+                value.style.cssText = `
+                    transform:translate(${l}px,0px);
+                    opacity:1;`
+            }
+        })
+        page3Div.forEach(value => {
+            value.onmouseenter = function (ev) {
+                value.classList.toggle('up')
+            }
+            value.onmouseout = function (ev) {
+                value.classList.toggle('up')
+            }
+        })
+        var divs = document.querySelectorAll('article div')
+        var style = document.getElementsByTagName('style')[0]
+
+        window.onresize = () => {
+            resize();
+        }
+
+        var header2 = document.querySelectorAll('header')[1];
+        var main1 = header2.querySelector('main');
+        var nav = header2.querySelector('nav');
+
+
+        function resize() {
+            var width = document.documentElement.offsetWidth;
+            if (width < 1000) {
+                style.innerHTML += `article main{display: flex;flex-direction: column;justify-content: space-around;align-items:center;}`
+                style.innerHTML += `.page3{
+                    display: flex;flex-direction: column;justify-content: space-around;align-items:center
+                }`
+                style.innerHTML += `article main div{
+                    color:yellow
+                }`
+                document.querySelector('header').style.display = 'none';
+                document.querySelectorAll('header')[1].style.display = 'block'
+
+                main1.addEventListener('click', () => {
+                    nav.classList.toggle('show')
+                })
+
+            } else if (width >= 1000) {
+                style.innerHTML += `article main div{
+                    color:#000
+                }`;
+                style.innerHTML += `article main{
+                    display: flex;flex-direction: row;justify-content: space-around
+                }`
+                document.querySelector('header').style.display = 'block';
+                document.querySelectorAll('header')[1].style.display = 'none';
+            }
+        }
+
+        document.onmousedown = (ev) => {
+            ev.cancelBubble;
+        }
+
+        //响应式布局
+
+        console.timeEnd('6');
+    </script>
+
+</body>
+
+</html>
